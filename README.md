@@ -68,83 +68,6 @@ public class Main {
 }
 ```
 
-Here’s a concise and clear `README.md` for your project that explains its purpose, main features, and how to use it, including some annotated code examples:
-
----
-
-````markdown
-# Mini Custom Dependency Injection Framework (Java)
-
-This project is a simplified version of Spring’s IoC (Inversion of Control) container built from scratch using Java. It provides a basic dependency injection mechanism using **custom annotations** and supports multiple injection strategies.
-
-## ✅ Features Implemented
-
-- Annotation-based dependency injection:
-  - `@SimpleComponent` to register beans
-  - `@SimpleAutoWired` for field, setter, or constructor injection
-- Component scanning (via `@ComponentScan`)
-- Dependency resolution and injection at runtime
-- Support for:
-  - Field injection
-  - Setter injection
-  - Constructor injection
-
-## 🔧 How It Works
-
-### Configuration Class
-
-```java
-@Configuration
-@ComponentScan("com.chakir")
-public class AppConfig {
-}
-````
-
-### Annotating Components
-
-```java
-@SimpleComponent
-public class Rep {
-    private Map<Integer, Test> testMap = new HashMap<>();
-    
-    public Rep() {
-        testMap.put(1, new Test(1, "test1"));
-    }
-
-    public Test getById(int id) {
-        return testMap.get(id);
-    }
-}
-```
-
-```java
-@SimpleComponent
-public class Serv {
-    private Rep repo;
-
-    @SimpleAutoWired
-    public Serv(Rep repo) {
-        this.repo = repo;
-    }
-
-    public Test test(int id) {
-        return repo.getById(id);
-    }
-}
-```
-
-### Main Application
-
-```java
-public class Main {
-    public static void main(String[] args) throws Exception {
-        AppContext appContext = new AppContext(AppConfig.class);
-        Serv serv = appContext.getInstance(Serv.class);
-        System.out.println(serv.test(1));
-    }
-}
-```
-
 ## Dependency Injection Types Supported
 
 * **Field Injection**
@@ -153,10 +76,9 @@ public class Main {
 
 ## To Be Implemented
 
-* [ ] XML-based configuration using JAXB
-* [ ] Circular dependency handling
+* XML-based configuration using JAXB
+* Circular dependency handling
 
----
 
 ## Project Structure
 
