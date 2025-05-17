@@ -8,6 +8,7 @@ import com.chakir.repository.Rep;
 
 @SimpleComponent
 public class Serv {
+    @SimpleAutoWired
     private Rep repo;
     @SimpleAutoWired
     public Serv(Rep repo){
