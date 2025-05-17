@@ -1,11 +1,12 @@
 package com.chakir.repository;
 
+import annotations.SimpleComponent;
 import com.chakir.entity.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
-
+@SimpleComponent
 public class Rep {
     Map<Integer, Test> testIdToTestMap = new HashMap<>();
 
